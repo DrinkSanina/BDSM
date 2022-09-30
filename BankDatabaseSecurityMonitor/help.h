@@ -1,5 +1,13 @@
 #pragma once
-
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<vector>
+#include<algorithm>
+#include<map>
+#include <sstream>
+#include<chrono>
+#include"nlohmann/json.hpp"
 
 //Пройти по всем транзакциям и добавить к определенному паспорту его транзакцию
 //for (auto& item : data["transactions"].items())
@@ -30,9 +38,9 @@
 //		cout << it->second[i] << " ";
 //	}
 //	cout << endl;
-
-//	
 //}
 
 //Как обратиться к определенной транзакции по её дате
-//cout << data["transactions"]["459273621"]["date"] << endl;
+//cout << data["transactions"]["<ключ - ИД транзакции>"]["<любое поле>"] << endl;
+
+
