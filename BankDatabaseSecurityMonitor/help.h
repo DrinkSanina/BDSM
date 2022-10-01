@@ -8,11 +8,15 @@
 #include <sstream>
 #include<chrono>
 #include"nlohmann/json.hpp"
+
 using namespace std;
 using json = nlohmann::json;
 vector<string> ValidPasport(json);
 void OutputMAP(vector<string>,int);
 vector<string> ParsePOS(json);
+vector<string> ValidAccount(json);
+vector<string> AssEater(vector<string>, vector<string>, vector<string>);
+
 //Пройти по всем транзакциям и добавить к определенному паспорту его транзакцию
 //for (auto& item : data["transactions"].items())
 //{

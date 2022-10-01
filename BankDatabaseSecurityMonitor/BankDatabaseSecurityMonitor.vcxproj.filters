@@ -21,6 +21,9 @@
     <ClCompile Include="CallMeSaninaPassportMan.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="SeeYouLaterAccountaitor.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="help.h">
