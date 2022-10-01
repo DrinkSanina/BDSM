@@ -8,7 +8,11 @@
 #include <sstream>
 #include<chrono>
 #include"nlohmann/json.hpp"
-
+using namespace std;
+using json = nlohmann::json;
+vector<string> ValidPasport(json);
+void OutputMAP(vector<string>,int);
+vector<string> ParsePOS(json);
 //Пройти по всем транзакциям и добавить к определенному паспорту его транзакцию
 //for (auto& item : data["transactions"].items())
 //{
@@ -17,7 +21,18 @@
 //	peoplesTransactions[passport].push_back(item.key());
 //}
 
-
+////Удаление смирных
+	////Но вдруг среди них есть скатина, которая по просроченному паспорту хуячит
+	//for (auto it = passportsValidationDates.cbegin(); it != passportsValidationDates.cend();)
+	//{
+	//	//Если только одна дата - удалить из словаря
+	//	if (it->second.size() == 1)
+	//		passportsValidationDates.erase(it++);
+	//	else
+	//		++it;
+	//}
+	// 
+	// 
 ////Вывод всех транзакций определенного паспорта
 //for (map<string, vector<string>>::iterator it = terminals.begin(); it != terminals.end(); it++)
 //{

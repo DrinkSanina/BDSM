@@ -1,16 +1,10 @@
 #include"help.h"
 
-using json = nlohmann::json;
 
-using namespace std;
 
-int main()
+vector<string> ValidPasport(json data)
 {
-	setlocale(LC_ALL, "en_us.utf8");
 
-	//Загрузить json из файла
-	ifstream f("transactions.json");
-	json data = json::parse(f);
 	std::string date_time_format = "%Y-%m-%d";
 
 	//Выборка по паспорту и валидации
@@ -22,7 +16,7 @@ int main()
 		passportsValidationDates.insert(pair<string, vector<chrono::year_month_day>>{passport, {}});
 	}
 
-	//Пройти по всем транзакциям и добавить к определенному терминалу его город
+	//Пройти по всем транзакциям и добавить к определенному номеру паспорта его валидность 
 	for (auto& item : data["transactions"].items())
 	{
 		string passport = item.value()["passport"].dump();
@@ -41,17 +35,8 @@ int main()
 		}
 	}
 
-	////Удаление смирных
-	////Но вдруг среди них есть скатина, которая по просроченному паспорту хуячит
-	//for (auto it = passportsValidationDates.cbegin(); it != passportsValidationDates.cend();)
-	//{
-	//	//Если только одна дата - удалить из словаря
-	//	if (it->second.size() == 1)
-	//		passportsValidationDates.erase(it++);
-	//	else
-	//		++it;
-	//}
-
+	
+	//удаление из словаря всех кто имеет одну валидность паспорта старше даты транзакции
 	for (auto& item : data["transactions"].items())
 	{
 		string passport = item.value()["passport"].dump();
@@ -73,21 +58,17 @@ int main()
 			
 		}
 	}
-
-	//Вывод каждого пасспорта и даты валидации
-	for (map<string, vector<chrono::year_month_day>>::iterator it = passportsValidationDates.begin(); it != passportsValidationDates.end(); it++)
-	{
-		cout << "passport " << it->first << " validations: ";
-		for (int i = 0; i < it->second.size(); i++)
-		{
-			cout << it->second[i] << " ";
+	//создание вектора и добавление в него всех подозрительных транзакций 
+	vector<string> transaction;
+	for (auto& item : data["transactions"].items()) {
+		string pass = item.value()["passport"].dump();
+		if (passportsValidationDates.find(pass) != passportsValidationDates.end()) {
+			transaction.push_back(item.key());
 		}
-		cout << endl;
 	}
+	
 
-	//Последняя разработка - список банкоматов с уникальными городами. В списке где больше одного уникального города
-	//происходит что-то темное
+	//Последняя разработка -  добваили второй патерн
 
-
-	return 0;
+	return transaction;
 }
