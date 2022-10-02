@@ -16,6 +16,7 @@ void OutputMAP(vector<string>,int);
 vector<string> ParsePOS(json);
 vector<string> ValidAccount(json);
 vector<string> AssEater(vector<string>, vector<string>, vector<string>);
+vector<string> AccountClient(json);
 
 //Пройти по всем транзакциям и добавить к определенному паспорту его транзакцию
 //for (auto& item : data["transactions"].items())
@@ -48,16 +49,7 @@ vector<string> AssEater(vector<string>, vector<string>, vector<string>);
 //	cout << endl;	
 //}
 
-////Вывод всех транзакций определенного паспорта
-//for (map<string, vector<string>>::iterator it = peoplesTransactions.begin(); it != peoplesTransactions.end(); it++)
-//{
-//	cout << "passport " << it->first << " transactions: ";
-//	for (int i = 0; i < it->second.size(); i++)
-//	{
-//		cout << it->second[i] << " ";
-//	}
-//	cout << endl;
-//}
+
 
 //Как обратиться к определенной транзакции по её дате
 //cout << data["transactions"]["<ключ - ИД транзакции>"]["<любое поле>"] << endl;

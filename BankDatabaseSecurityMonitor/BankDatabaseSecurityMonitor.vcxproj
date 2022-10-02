@@ -130,6 +130,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CallMeSaninaPassportMan.cpp" />
+    <ClCompile Include="HereLookingPIDCards.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="SeeYouLaterAccountaitor.cpp" />
   </ItemGroup>

@@ -49,19 +49,18 @@ int main()
 	vector<string> passportsValidationDates = ValidPasport(data);
 	vector<string> terminals = ParsePOS(data);
 	vector<string> accounts = ValidAccount(data);
+	vector<string> client = AccountClient(data);
 
 	Fraud terminal_fraud(1, terminals);
 	Fraud passport_fraud(2, passportsValidationDates);
 	Fraud account_fraud(3, accounts);
-
+	Fraud client_fraud(4, client);
 	cout << terminal_fraud.toString() << endl;
 	cout << passport_fraud.toString() << endl;
 	cout << account_fraud.toString() << endl;
+	cout << client_fraud.toString() << endl;
 
-
-	//OutputMAP(terminals,1);
-	//OutputMAP(passportsValidationDates,2);
-	//OutputMAP(accounts, 3);
+	
 
 	return 0;
 }
